@@ -7,30 +7,45 @@
 
     <!-- styles -->
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.1/moment.min.js"></script>
   </head>
   <body>
     <section class="section-center">
       <!-- image -->
       <article class="gift-img">
-        <img src="./gift.jpeg" alt="gift" />
+        <img src="./cover.jpg" alt="Cover Photo" />
       </article>
       <!-- info -->
       <article class="gift-info">
-        <h3>old iphone giveaway</h3>
+        <h3>To My Sweetheart</h3>
         <h4 class="giveaway">
-          giveaway ends on Sunday, 24 April 2020, 8:00am
+          Starting on Tuesday, 26 July 2016,5:30pm
         </h4>
         <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-          Reprehenderit molestiae cum libero atque ut voluptate qui consectetur
-          aliquid incidunt voluptatem quos, dolore, non commodi quaerat aliquam
-          eligendi, quisquam totam blanditiis.
+          You're the one who enters my life from nowhere but suddenly becomes my world itself.
+          I can't go on without you, my love. Stay with me forever. I'm too.
         </p>
         <div class="deadline">
+          <!-- years -->
+          <div class="deadline-format">
+            <div>
+              <h4 class="years">0</h4>
+              <span>years</span>
+            </div>
+          </div>
+          <!-- end of years -->
+          <!-- months -->
+          <div class="deadline-format">
+            <div>
+              <h4 class="mons"></h4>
+              <span>mons</span>
+            </div>
+          </div>
+          <!-- end of months -->
           <!-- days -->
           <div class="deadline-format">
             <div>
-              <h4 class="days">34</h4>
+              <h4 class="days">0</h4>
               <span>days</span>
             </div>
           </div>
@@ -38,7 +53,7 @@
           <!-- days -->
           <div class="deadline-format">
             <div>
-              <h4 class="hours">34</h4>
+              <h4 class="hours">0</h4>
               <span>hours</span>
             </div>
           </div>
@@ -46,7 +61,7 @@
           <!-- minutes -->
           <div class="deadline-format">
             <div>
-              <h4 class="minutes">34</h4>
+              <h4 class="mins">0</h4>
               <span>mins</span>
             </div>
           </div>
@@ -54,7 +69,7 @@
           <!-- minutes -->
           <div class="deadline-format">
             <div>
-              <h4 class="seconds">34</h4>
+              <h4 class="secs">0</h4>
               <span>secs</span>
             </div>
           </div>
@@ -62,7 +77,30 @@
         </div>
       </article>
     </section>
+    <div id="duration"></div>
     <!-- javascript -->
-    <script src="app.js"></script>
+    <!-- <script src="app.js"></script> -->
+    <script>
+      var x = setInterval(function() {
+        const diffDuration = moment.duration(moment(new Date()).diff(moment('2016-07-26 13:26')));
+        const items = document.querySelectorAll('.deadline-format h4');
+        const timeDiff = [];
+        const getDiffTime = () => {
+          diffDuration.years() > 0 ? timeDiff.push(`${diffDuration.years()}`) : null;
+          diffDuration.months() > 0 ? timeDiff.push(`${diffDuration.months()}`) : null;
+          diffDuration.days() > 0 ? timeDiff.push(`${diffDuration.days()}`) : null;
+          diffDuration.hours() > 0 ? timeDiff.push(`${diffDuration.hours()}`) : null;
+          diffDuration.minutes() > 0 ? timeDiff.push(`${diffDuration.minutes()}`) : null;
+          diffDuration.seconds() > 0 ? timeDiff.push(`${diffDuration.seconds()}`) : null;
+          diffDuration.milliseconds() > 0 ? timeDiff.push(`${diffDuration.milliseconds()}`) : null;
+          return timeDiff;
+        }
+        getDiffTime();
+
+        items.forEach((val, index) => {
+          val.innerHTML = timeDiff[index];
+        });
+      }, 1000);
+    </script>
   </body>
 </html>
