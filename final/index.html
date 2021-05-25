@@ -12,64 +12,67 @@
   <body>
     <section class="section-center">
       <!-- image -->
-      <article class="gift-img">
-        <img src="./cover.jpg" alt="Cover Photo" />
+      <article class="img-container">
+        <img src="./lilo-stitch.jpg" alt="Cover Photo" />
+        <div class="overlay">
+          <h1 class="overlay-text" id="overlay-text">Total Days</h1>
+        </div>
       </article>
       <!-- info -->
-      <article class="gift-info">
+      <article class="count-info">
         <h3>To My Sweetheart</h3>
-        <h4 class="giveaway">
+        <h4 class="count-start">
           Starting on Tuesday, 26 July 2016,5:30pm
         </h4>
         <p>
           You're the one who enters my life from nowhere but suddenly becomes my world itself.
           I can't go on without you, my love. Stay with me forever. I'm too.
         </p>
-        <div class="deadline">
+        <div class="count-time">
           <!-- years -->
-          <div class="deadline-format">
+          <div class="count-time-format">
             <div>
-              <h4 class="years">0</h4>
+              <h4 class="years">00</h4>
               <span>years</span>
             </div>
           </div>
           <!-- end of years -->
           <!-- months -->
-          <div class="deadline-format">
+          <div class="count-time-format">
             <div>
-              <h4 class="mons"></h4>
+              <h4 class="mons">00</h4>
               <span>mons</span>
             </div>
           </div>
           <!-- end of months -->
           <!-- days -->
-          <div class="deadline-format">
+          <div class="count-time-format">
             <div>
-              <h4 class="days">0</h4>
+              <h4 class="days">00</h4>
               <span>days</span>
             </div>
           </div>
           <!-- end of days -->
           <!-- days -->
-          <div class="deadline-format">
+          <div class="count-time-format">
             <div>
-              <h4 class="hours">0</h4>
+              <h4 class="hours">00</h4>
               <span>hours</span>
             </div>
           </div>
           <!-- end of days -->
           <!-- minutes -->
-          <div class="deadline-format">
+          <div class="count-time-format">
             <div>
-              <h4 class="mins">0</h4>
+              <h4 class="mins">00</h4>
               <span>mins</span>
             </div>
           </div>
           <!-- end of days -->
           <!-- minutes -->
-          <div class="deadline-format">
+          <div class="count-time-format">
             <div>
-              <h4 class="secs">0</h4>
+              <h4 class="secs">00</h4>
               <span>secs</span>
             </div>
           </div>
@@ -82,24 +85,33 @@
     <!-- <script src="app.js"></script> -->
     <script>
       var x = setInterval(function() {
-        const diffDuration = moment.duration(moment(new Date()).diff(moment('2016-07-26 13:26')));
-        const items = document.querySelectorAll('.deadline-format h4');
+        const diffDuration = moment.duration(moment(new Date()).diff(moment('2016-07-26 17:30')));
+        // console.log(Math.floor(diffDuration.asDays()));
+        const items = document.querySelectorAll('.count-time-format h4');
         const timeDiff = [];
+
         const getDiffTime = () => {
-          diffDuration.years() > 0 ? timeDiff.push(`${diffDuration.years()}`) : null;
-          diffDuration.months() > 0 ? timeDiff.push(`${diffDuration.months()}`) : null;
-          diffDuration.days() > 0 ? timeDiff.push(`${diffDuration.days()}`) : null;
-          diffDuration.hours() > 0 ? timeDiff.push(`${diffDuration.hours()}`) : null;
-          diffDuration.minutes() > 0 ? timeDiff.push(`${diffDuration.minutes()}`) : null;
-          diffDuration.seconds() > 0 ? timeDiff.push(`${diffDuration.seconds()}`) : null;
-          diffDuration.milliseconds() > 0 ? timeDiff.push(`${diffDuration.milliseconds()}`) : null;
+          diffDuration.years() > 0 ? timeDiff.push(`${ ("0" + diffDuration.years()).slice(-2) }`) : 00;
+          0 < diffDuration.months() < 12 ? timeDiff.push(`${ ("0" + diffDuration.months()).slice(-2) }`) : 00;
+          0 < diffDuration.days() < 30 ? timeDiff.push(`${ ("0" + diffDuration.days()).slice(-2) }`) : 00;
+          0 < diffDuration.hours() < 24 ? timeDiff.push(`${ ("0" + diffDuration.hours()).slice(-2) }`) : 00;
+          0 < diffDuration.minutes() < 60 ? timeDiff.push(`${ ("0" + diffDuration.minutes()).slice(-2) }`) : 00;
+          0 < diffDuration.seconds() < 60 ? timeDiff.push(`${ ("0" + diffDuration.seconds()).slice(-2) }`) : 00;
+          // 0 < diffDuration.milliseconds() < 60 ? timeDiff.push(`${diffDuration.milliseconds()}`) : 0;
           return timeDiff;
         }
         getDiffTime();
 
+        const overlayText = document.getElementById('overlay-text');
+        // const overlayText = document.getElementsByClassName('overlay-text');
+        console.log(overlayText);
+        overlayText.innerHTML = Math.floor(diffDuration.asDays()) + " Days";
+
         items.forEach((val, index) => {
           val.innerHTML = timeDiff[index];
         });
+
+
       }, 1000);
     </script>
   </body>

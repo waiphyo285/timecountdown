@@ -67,24 +67,31 @@ Global Styles
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: var(--ff-secondary);
-  background: var(--clr-grey-10);
+  background: var(--clr-primary-5);
   color: var(--clr-grey-1);
   line-height: 1.5;
   font-size: 0.875rem;
 }
+
 ul {
   list-style-type: none;
 }
+
 a {
   text-decoration: none;
 }
-img:not(.logo) {
+
+/* img:not(.logo) {
   width: 100%;
-}
+} */
 img {
   display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
 }
 
 h1,
@@ -97,22 +104,28 @@ h4 {
   margin-bottom: 0.75rem;
   font-family: var(--ff-primary);
 }
+
 h1 {
   font-size: 3rem;
 }
+
 h2 {
   font-size: 2rem;
 }
+
 h3 {
   font-size: 1.25rem;
 }
+
 h4 {
   font-size: 0.875rem;
 }
+
 p {
   margin-bottom: 1.25rem;
   color: var(--clr-grey-5);
 }
+
 @media screen and (min-width: 800px) {
   h1 {
     font-size: 4rem;
@@ -152,10 +165,12 @@ p {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   border-radius: var(--radius);
 }
+
 .btn:hover {
   color: var(--clr-white);
   background: var(--clr-black);
 }
+
 /* section */
 .section {
   padding: 5rem 0;
@@ -172,25 +187,61 @@ main {
   display: grid;
   place-items: center;
 }
+
 /*
 =============== 
 Countdown Timer
 ===============
 */
-.gift-img {
+.img-container {
+  position: relative;
   margin-bottom: 2rem;
+  border: solid 5px var(--clr-grey-10);
+  border-radius: .5rem;
 }
-.gift-info h3 {
+
+.img-container:hover .overlay {
+  opacity: 1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: var(--clr-primary-3);
+}
+
+.overlay-text {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.count-info h3, h4 {
   text-transform: uppercase;
-  color: var(--clr-primary-3);
+  color: var(--clr-white);
 }
-.gift-info p {
-  color: var(--clr-grey-6);
+
+.count-info p {
+  color: var(--clr-grey-10);
 }
+
 .date {
   color: var(--clr-grey-5);
   font-size: 0.85rem;
 }
+
 @media screen and (min-width: 992px) {
   .section-center {
     display: grid;
@@ -199,33 +250,40 @@ Countdown Timer
     gap: 3rem;
     width: 95vw;
   }
-  .gift-img {
+  .img-container {
     margin-bottom: 0;
   }
 }
-.gift-info p {
+
+.count-info p {
   margin: 2rem 0;
 }
-.deadline {
+
+.count-time {
   display: flex;
 }
-.deadline-format {
+
+.count-time-format {
   background: var(--clr-grey-1);
   color: var(--clr-white);
-  margin-right: 1rem;
-  width: 5rem;
-  height: 5rem;
+  margin-right: 0.5rem;
+  width: 4.5rem;
+  height: 4.5rem;
   display: grid;
   place-items: center;
   text-align: center;
+  border-radius: var(--radius);
+  box-shadow: var(--light-shadow);
 }
-.deadline-format span {
+
+.count-time-format span {
   display: block;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 0.85rem;
 }
-.deadline h4:not(.expired) {
+
+.count-time h4:not(.expired) {
   font-size: 2rem;
   margin-bottom: 0.25rem;
   letter-spacing: var(--spacing);
