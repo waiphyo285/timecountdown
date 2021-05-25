@@ -3,10 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Countdown</title>
+    <link rel="icon" href="./blue-heart-icon.png">
+    <title>Time with Arluma </title>
 
     <!-- styles -->
     <link rel="stylesheet" href="styles.css" />
+
+    <!-- moment js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.1/moment.min.js"></script>
   </head>
   <body>
@@ -110,7 +113,6 @@
         items.forEach((val, index) => {
           val.innerHTML = timeDiff[index];
         });
-
 
       }, 1000);
     </script>
