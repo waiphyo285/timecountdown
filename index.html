@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="./blue-heart-icon.png">
+    <link rel="icon" href="./public/images/blue-heart-icon.png">
     <title>Time with Arluma </title>
 
     <!-- styles -->
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./public/css/styles.css" />
 
     <!-- moment js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.1/moment.min.js"></script>
@@ -16,7 +16,7 @@
     <section class="section-center">
       <!-- image -->
       <article class="img-container">
-        <img src="./lilo-stitch.jpg" alt="Cover Photo" />
+        <img src="./public/images/lilo-stitch.jpg" alt="Cover Photo" />
         <div class="overlay">
           <h1 class="overlay-text" id="overlay-text">Total Days</h1>
         </div>
@@ -25,11 +25,11 @@
       <article class="count-info">
         <h3>To My Sweetheart</h3>
         <h4 class="count-start">
-          Starting on Tuesday, 26 July 2016,5:30pm
+          Starting on Tuesday, 26 July 2016
         </h4>
         <p>
           You're the one who enters my life from nowhere but suddenly becomes my world itself.
-          I can't go on without you, my love. Stay with me forever. I'm too.
+          I can't go on anywhere without you as I know it’s always better when we’re together.
         </p>
         <div class="count-time">
           <!-- years -->
@@ -85,10 +85,10 @@
     </section>
     <div id="duration"></div>
     <!-- javascript -->
-    <!-- <script src="app.js"></script> -->
+    <!-- <script src="./public/js/app.js"></script> -->
     <script>
       var x = setInterval(function() {
-        const diffDuration = moment.duration(moment(new Date()).diff(moment('2016-07-26 17:30')));
+        const diffDuration = moment.duration(moment(new Date()).diff(moment('2016-07-26 00:00')));
         // console.log(Math.floor(diffDuration.asDays()));
         const items = document.querySelectorAll('.count-time-format h4');
         const timeDiff = [];
@@ -106,8 +106,6 @@
         getDiffTime();
 
         const overlayText = document.getElementById('overlay-text');
-        // const overlayText = document.getElementsByClassName('overlay-text');
-        console.log(overlayText);
         overlayText.innerHTML = Math.floor(diffDuration.asDays()) + " Days";
 
         items.forEach((val, index) => {
